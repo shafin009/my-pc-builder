@@ -9,7 +9,7 @@ export const authOptions = {
     }),
   ],
   pages: {
-    signIn: "/login",
+    signIn: "https://my-pc-builder-store.netlify.app/login",
   },
 };
 
