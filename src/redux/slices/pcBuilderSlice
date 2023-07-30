@@ -1,0 +1,33 @@
+// pcBuilderSlice.js
+
+import { createSlice } from "@reduxjs/toolkit";
+
+
+
+
+const parsedSelectedProduct = [];
+
+const pcBuilderSlice = createSlice({
+  name: "pcBuilder",
+  initialState: {
+    selectedProduct: parsedSelectedProduct, 
+  },
+  reducers: {
+    setSelectedProduct(state, action) {
+      const { category, product } = action.payload;
+      
+      const updatedCategory = state.selectedProduct[category]?.filter(
+        (item) => item._id !== product._id,
+      );
+
+      state.selectedProduct = {
+        ...state.selectedProduct,
+        [category]: [...(updatedCategory || []), product],
+      };
+     
+    },
+  },
+});
+
+export const { setSelectedProduct } = pcBuilderSlice.actions;
+export default pcBuilderSlice.reducer;
